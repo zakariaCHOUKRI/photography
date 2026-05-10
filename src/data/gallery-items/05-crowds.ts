@@ -2,22 +2,22 @@ import type { Gallery } from '../gallery-types';
 import { image } from '../gallery-utils';
 
 const gallery: Gallery = {
-  title: 'D.A.N.C.E.',
-  slug: 'dance',
-  description: 'Do the D-A-N-C-E! 1, 2, 3, 4, fight!',
+  title: 'Crowds',
+  slug: 'crowds',
+  description: '',
   location: 'Various',
-  year: '2025-2026',
+  year: 2025,
   category: 'Street Photography',
   featured: false,
   visible: true,
   photos: [
     {
-      src: image('images/dance/dance_0.jpg'),
-      thumb: image('images/dance/dance_0.jpg'),
-      alt: '',
+      src: image('images/crowds/crowds_0.jpg'),
+      thumb: image('images/crowds/crowds_0.jpg'),
+      alt: 'Crowd scene',
       title: '',
-      location: 'Brussels',
-      year: 2026,
+      location: 'Various',
+      year: 2025,
       orientation: 'landscape',
     },
   ],
