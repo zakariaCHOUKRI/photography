@@ -83,8 +83,8 @@ export const galleries: Gallery[] = [
     featured: true,
     photos: [
       {
-        src: image('images/alter/dogs_0.jpg'),
-        thumb: image('images/alter/dogs_0.jpg'),
+        src: image('images/dogs/dogs_0.jpg'),
+        thumb: image('images/dogs/dogs_0.jpg'),
         alt: '',
         title: 'Dogs 0',
         location: 'Lausanne',
@@ -92,8 +92,8 @@ export const galleries: Gallery[] = [
         orientation: 'portrait',
       },
       {
-        src: image('images/alter/dogs_1.jpg'),
-        thumb: image('images/alter/dogs_1.jpg'),
+        src: image('images/dogs/dogs_1.jpg'),
+        thumb: image('images/dogs/dogs_1.jpg'),
         alt: '',
         title: 'Dogs 1',
         location: 'Agadir',
@@ -101,8 +101,8 @@ export const galleries: Gallery[] = [
         orientation: 'landscape',
       },
       {
-        src: image('images/alter/dogs_2.jpg'),
-        thumb: image('images/alter/dogs_2.jpg'),
+        src: image('images/dogs/dogs_2.jpg'),
+        thumb: image('images/dogs/dogs_2.jpg'),
         alt: '',
         title: 'Dogs 2',
         location: 'Lausanne',
@@ -110,8 +110,8 @@ export const galleries: Gallery[] = [
         orientation: 'landscape',
       },
       {
-        src: image('images/alter/dogs_3.jpg'),
-        thumb: image('images/alter/dogs_3.jpg'),
+        src: image('images/dogs/dogs_3.jpg'),
+        thumb: image('images/dogs/dogs_3.jpg'),
         alt: '',
         title: 'Dogs 3',
         location: 'Lausanne',
@@ -119,8 +119,8 @@ export const galleries: Gallery[] = [
         orientation: 'landscape',
       },
       {
-        src: image('images/alter/dogs_4.jpg'),
-        thumb: image('images/alter/dogs_4.jpg'),
+        src: image('images/dogs/dogs_4.jpg'),
+        thumb: image('images/dogs/dogs_4.jpg'),
         alt: '',
         title: 'Dogs 4',
         location: 'Brussels',
