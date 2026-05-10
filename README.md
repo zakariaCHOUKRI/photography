@@ -1,43 +1,97 @@
-# Astro Starter Kit: Minimal
+# Photography Portfolio
 
-```sh
-npm create astro@latest -- --template minimal
+Personal photography portfolio website for Zakaria Choukri.
+
+Live site:
+
+https://zakariaCHOUKRI.github.io/photography/
+
+## Tech Stack
+
+- Astro
+- TypeScript
+- Static site generation
+- GitHub Pages
+- GitHub Actions
+
+## Purpose
+
+This website showcases selected photography work through a minimal, fast, image-focused portfolio.
+
+## Local Development
+
+Install dependencies:
+
+```bash
+npm install
+````
+
+Start the local dev server:
+
+```bash
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Build the site:
 
-## 🚀 Project Structure
+```bash
+npm run build
+```
 
-Inside of your Astro project, you'll see the following folders and files:
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+## Deployment
+
+The site is deployed to GitHub Pages using GitHub Actions.
+
+Production URL:
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+https://zakariaCHOUKRI.github.io/photography/
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Important Deployment Note
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+This is a GitHub Pages project site.
 
-Any static assets, like images, can be placed in the `public/` directory.
+The Astro configuration must include:
 
-## 🧞 Commands
+```js
+site: "https://zakariaCHOUKRI.github.io",
+base: "/photography"
+```
 
-All commands are run from the root of the project, from a terminal:
+This ensures that links and assets work correctly under the `/photography/` path.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Project Structure
 
-## 👀 Want to learn more?
+```text
+src/
+├── components/
+├── content/
+├── layouts/
+├── pages/
+└── styles/
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+public/
+└── images/
+```
+
+## Image Guidelines
+
+Use optimized image files.
+
+Recommended versions:
+
+* thumbnail images for gallery grids
+* large images for detail or lightbox views
+
+Avoid committing full-resolution originals to the repository.
+
+## License
+
+All photographs are copyright Zakaria Choukri unless otherwise stated.

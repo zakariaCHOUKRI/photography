@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact | Zakaria Choukri Photography"
+  description="Contact Zakaria Choukri for collaborations, prints, and photography inquiries."
+>
+  <section class="stack">
+    <h1>Contact</h1>
+    <p class="lede contact-intro">
+      For collaborations, commissions, or print requests, feel free to get in touch.
+    </p>
+    <p class="contact-line">Email: <a href="mailto:strangeyeux@gmail.com">strangeyeux@gmail.com</a></p>
+    <p class="contact-line">Instagram: <a href="https://instagram.com/strangeyeux">@strangeyeux</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .contact-line a {
+    overflow-wrap: normal;
+  }
+
+  .contact-intro {
+    max-width: none;
+    white-space: nowrap;
+  }
+</style>

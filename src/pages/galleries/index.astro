@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+import GalleryCard from '../../components/GalleryCard.astro';
+import { galleries } from '../../data/galleries';
+---
+
+<BaseLayout
+  title="Galleries | Zakaria Choukri Photography"
+  description="Browse photography galleries by Zakaria Choukri."
+>
+  <section class="stack">
+    <h1>Galleries</h1>
+    <p class="lede">A curated set of collections organized by mood and place.</p>
+    <ul class="gallery-list" role="list">
+      {galleries.map((gallery) => (
+        <li><GalleryCard gallery={gallery} /></li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

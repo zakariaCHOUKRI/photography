@@ -1,0 +1,39 @@
+---
+import Footer from './Footer.astro';
+import Navbar from './Navbar.astro';
+import Seo from './seo.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  pathname?: string;
+  ogImage?: string;
+}
+
+const {
+  title = 'Zakaria Choukri Photography',
+  description = 'A minimal photography portfolio by Zakaria Choukri.',
+  pathname,
+  ogImage
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <Seo title={title} description={description} pathname={pathname} ogImage={ogImage} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="site-shell">
+      <Navbar />
+      <main id="main-content">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
