@@ -4,7 +4,7 @@ export interface Photo {
   alt: string;
   title?: string;
   location?: string;
-  year?: number;
+  year?: number | string;
   orientation?: 'landscape' | 'portrait' | 'square';
 }
 
@@ -13,7 +13,7 @@ export interface Gallery {
   slug: string;
   description: string;
   location?: string;
-  year?: number;
+  year?: number | string;
   category?: string;
   featured?: boolean;
   photos: Photo[];
@@ -66,6 +66,63 @@ export const galleries: Gallery[] = [
         thumb: image('images/alter/alter_4.jpg'),
         alt: '',
         title: 'Alter 4',
+        location: 'Brussels',
+        year: 2026,
+        orientation: 'landscape',
+      }
+    ]
+  },
+
+  {
+    title: 'Dogs: man\'s best friend',
+    slug: 'dogs',
+    description: '',
+    location: 'Brussels',
+    year: '2025-2026',
+    category: 'Street Photography',
+    featured: true,
+    photos: [
+      {
+        src: image('images/alter/dogs_0.jpg'),
+        thumb: image('images/alter/dogs_0.jpg'),
+        alt: '',
+        title: 'Dogs 0',
+        location: 'Lausanne',
+        year: 2025,
+        orientation: 'portrait',
+      },
+      {
+        src: image('images/alter/dogs_1.jpg'),
+        thumb: image('images/alter/dogs_1.jpg'),
+        alt: '',
+        title: 'Dogs 1',
+        location: 'Agadir',
+        year: 2025,
+        orientation: 'landscape',
+      },
+      {
+        src: image('images/alter/dogs_2.jpg'),
+        thumb: image('images/alter/dogs_2.jpg'),
+        alt: '',
+        title: 'Dogs 2',
+        location: 'Lausanne',
+        year: 2025,
+        orientation: 'landscape',
+      },
+      {
+        src: image('images/alter/dogs_3.jpg'),
+        thumb: image('images/alter/dogs_3.jpg'),
+        alt: '',
+        title: 'Dogs 3',
+        location: 'Lausanne',
+        year: 2025,
+        orientation: 'landscape',
+      },
+      {
+        src: image('images/alter/dogs_4.jpg'),
+        thumb: image('images/alter/dogs_4.jpg'),
+        alt: '',
+        title: 'Dogs 4',
         location: 'Brussels',
         year: 2026,
         orientation: 'landscape',
