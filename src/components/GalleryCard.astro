@@ -20,7 +20,10 @@ interface Props {
 }
 
 const { gallery } = Astro.props;
-const BASE = import.meta.env.BASE_URL || '/';
+const BASE = (() => {
+  const b = import.meta.env.BASE_URL || '/';
+  return b.endsWith('/') ? b : b + '/';
+})();
 const galleryHref = `${BASE}galleries/${gallery.slug}/`;
 ---
 
