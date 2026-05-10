@@ -16,7 +16,7 @@ const gallery: Gallery = {
       thumb: image('images/crowds/crowds_0.jpg'),
       alt: 'Crowd scene',
       title: '',
-      location: 'Various',
+      location: 'Brussels',
       year: 2025,
       orientation: 'landscape',
     },
