@@ -1,132 +1,19 @@
-export interface Photo {
-  src: string;
-  thumb: string;
-  alt: string;
-  title?: string;
-  location?: string;
-  year?: number | string;
-  orientation?: 'landscape' | 'portrait' | 'square';
-}
+import type { Gallery } from './gallery-types';
 
-export interface Gallery {
-  title: string;
-  slug: string;
-  description: string;
-  location?: string;
-  year?: number | string;
-  category?: string;
-  featured?: boolean;
-  photos: Photo[];
-}
+export type { Gallery, Photo } from './gallery-types';
 
-const BASE = import.meta.env.BASE_URL || '/';
+type GalleryModule = {
+  default: Gallery;
+};
 
-const basePath = BASE.endsWith('/') ? BASE : `${BASE}/`;
-const image = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
+const galleryModules = import.meta.glob<GalleryModule>('./gallery-items/*.ts', {
+  eager: true,
+});
 
-export const galleries: Gallery[] = [
-  {
-    title: 'Alter: everything that I am not',
-    slug: 'alter',
-    description: 'I explore the many facets of \'The Other\', not as something separate, but as a series of daily confrontations that shape our identity. \'Everything That Is Not Me Right Now\' manifests through different interfaces: the empathetic bridge to the creature, the emotional landscape of a fellow human, the cold gaze of objects built in our image, and the communal mind expressed through collective art. Each photograph represents a distinct type of \'Other\', an urban Alter, which serves as a necessary mirror, challenging and defining our own sense of self.',
-    location: 'Brussels',
-    year: 2026,
-    category: 'Street Photography',
-    featured: true,
-    photos: [
-      {
-        src: image('images/alter/alter_1.jpg'),
-        thumb: image('images/alter/alter_1.jpg'),
-        alt: '',
-        title: 'Alter 1',
-        location: 'Brussels',
-        year: 2026,
-        orientation: 'landscape',
-      },
-      {
-        src: image('images/alter/alter_2.jpg'),
-        thumb: image('images/alter/alter_2.jpg'),
-        alt: '',
-        title: 'Alter 2',
-        location: 'Brussels',
-        year: 2026,
-        orientation: 'landscape',
-      },
-      {
-        src: image('images/alter/alter_3.jpg'),
-        thumb: image('images/alter/alter_3.jpg'),
-        alt: '',
-        title: 'Alter 3',
-        location: 'Brussels',
-        year: 2026,
-        orientation: 'landscape',
-      },
-      {
-        src: image('images/alter/alter_4.jpg'),
-        thumb: image('images/alter/alter_4.jpg'),
-        alt: '',
-        title: 'Alter 4',
-        location: 'Brussels',
-        year: 2026,
-        orientation: 'landscape',
-      }
-    ]
-  },
+export const allGalleries: Gallery[] = Object.entries(galleryModules)
+  .sort(([pathA], [pathB]) => pathA.localeCompare(pathB))
+  .map(([, module]) => module.default);
 
-  {
-    title: 'Dogs: man\'s best friend',
-    slug: 'dogs',
-    description: '',
-    location: 'Brussels',
-    year: '2025-2026',
-    category: 'Street Photography',
-    featured: true,
-    photos: [
-      {
-        src: image('images/dogs/dogs_0.jpg'),
-        thumb: image('images/dogs/dogs_0.jpg'),
-        alt: '',
-        title: 'Dogs 0',
-        location: 'Lausanne',
-        year: 2025,
-        orientation: 'portrait',
-      },
-      {
-        src: image('images/dogs/dogs_1.jpg'),
-        thumb: image('images/dogs/dogs_1.jpg'),
-        alt: '',
-        title: 'Dogs 1',
-        location: 'Agadir',
-        year: 2025,
-        orientation: 'landscape',
-      },
-      {
-        src: image('images/dogs/dogs_2.jpg'),
-        thumb: image('images/dogs/dogs_2.jpg'),
-        alt: '',
-        title: 'Dogs 2',
-        location: 'Lausanne',
-        year: 2025,
-        orientation: 'landscape',
-      },
-      {
-        src: image('images/dogs/dogs_3.jpg'),
-        thumb: image('images/dogs/dogs_3.jpg'),
-        alt: '',
-        title: 'Dogs 3',
-        location: 'Lausanne',
-        year: 2025,
-        orientation: 'landscape',
-      },
-      {
-        src: image('images/dogs/dogs_4.jpg'),
-        thumb: image('images/dogs/dogs_4.jpg'),
-        alt: '',
-        title: 'Dogs 4',
-        location: 'Brussels',
-        year: 2026,
-        orientation: 'landscape',
-      }
-    ]
-  },
-];
+export const galleries: Gallery[] = allGalleries.filter(
+  (gallery) => gallery.visible !== false
+);
