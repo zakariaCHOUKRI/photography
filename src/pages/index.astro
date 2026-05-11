@@ -11,7 +11,7 @@ const image = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 const featuredGalleries = galleries.filter((gallery) => gallery.featured).slice(0, 3);
 const heroImage = image('images/other/jumping_in_water.jpg');
 const allPhotos = galleries.flatMap((gallery) => gallery.photos);
-const glimpsesPhotos = allPhotos.sort(() => Math.random() - 0.5).slice(0, 4);
+const glimpsesPhotos = allPhotos.slice(0, 4);
 ---
 
 <BaseLayout
@@ -42,5 +42,59 @@ const glimpsesPhotos = allPhotos.sort(() => Math.random() - 0.5).slice(0, 4);
   <section class="stack" aria-labelledby="glimpses">
     <h2 id="glimpses">Glimpses</h2>
     <GalleryGrid photos={glimpsesPhotos} heading="Glimpses" />
+    <div id="__all_photos" data-json={JSON.stringify(allPhotos)} hidden></div>
+    <script type="text/javascript">
+      (function () {
+
+        function pickRandom(array, n) {
+          const arr = array.slice();
+          for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+          }
+          return arr.slice(0, n);
+        }
+
+        function hydrateGlimpses() {
+          let allPhotos = [];
+          try {
+            const el = document.getElementById('__all_photos');
+            allPhotos = el ? JSON.parse(el.dataset.json || '[]') : [];
+          } catch (e) {
+            return;
+          }
+          const picks = pickRandom(allPhotos, 4);
+          const grid = document.querySelector('.gallery-grid');
+          if (!grid) return;
+          const items = grid.querySelectorAll('li');
+          items.forEach((li, idx) => {
+            const photo = picks[idx];
+            if (!photo) return;
+            const img = li.querySelector('img');
+            const link = li.querySelector('a.photo-card-link');
+            const titleEl = li.querySelector('.photo-title');
+            const detailsEl = li.querySelector('.photo-details');
+            if (img) {
+              img.src = photo.thumb || photo.src;
+              img.alt = photo.alt || '';
+            }
+            if (link) link.href = photo.src;
+            if (titleEl) titleEl.textContent = photo.title || '';
+            if (detailsEl) {
+              const loc = photo.location || '';
+              const year = photo.year || '';
+              detailsEl.textContent = loc + (loc && year ? ' · ' : '') + year;
+            }
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', hydrateGlimpses);
+        } else {
+          hydrateGlimpses();
+        }
+      })();
+    </script>
   </section>
+
 </BaseLayout>
